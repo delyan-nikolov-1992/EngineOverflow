@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineOverflow.Web", "Web\E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineOverflow.Data.Common", "Data\EngineOverflow.Data.Common\EngineOverflow.Data.Common.csproj", "{0651FB7E-69C3-4927-B66F-FB44A28AECFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineOverflow.Web.Infrastructure", "Web\EngineOverflow.Web.Infrastructure\EngineOverflow.Web.Infrastructure.csproj", "{44531275-6845-4C7C-8FEE-50D9A843C508}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{0651FB7E-69C3-4927-B66F-FB44A28AECFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0651FB7E-69C3-4927-B66F-FB44A28AECFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0651FB7E-69C3-4927-B66F-FB44A28AECFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44531275-6845-4C7C-8FEE-50D9A843C508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44531275-6845-4C7C-8FEE-50D9A843C508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44531275-6845-4C7C-8FEE-50D9A843C508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44531275-6845-4C7C-8FEE-50D9A843C508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +62,6 @@ Global
 		{34CA6432-B615-4BC7-B4F2-C53015487288} = {133AE677-5B5C-4B82-8236-8203B2906538}
 		{E1C586CC-7882-4327-8CAF-807F6FBFDDD5} = {4D78D81D-8AED-4E57-BE5B-0415E6EBB957}
 		{0651FB7E-69C3-4927-B66F-FB44A28AECFF} = {133AE677-5B5C-4B82-8236-8203B2906538}
+		{44531275-6845-4C7C-8FEE-50D9A843C508} = {4D78D81D-8AED-4E57-BE5B-0415E6EBB957}
 	EndGlobalSection
 EndGlobal

@@ -43,6 +43,10 @@
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -275,6 +279,10 @@
     <ProjectReference Include="..\..\Data\EngineOverflow.Data\EngineOverflow.Data.csproj">
       <Project>{38e33ebe-0df7-4ba5-9eed-973d876041bc}</Project>
       <Name>EngineOverflow.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EngineOverflow.Web.Infrastructure\EngineOverflow.Web.Infrastructure.csproj">
+      <Project>{44531275-6845-4c7c-8fee-50d9a843c508}</Project>
+      <Name>EngineOverflow.Web.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
