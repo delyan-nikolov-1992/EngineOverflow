@@ -57,9 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EngineOverflow.Data.Common\EngineOverflow.Data.Common.csproj">
+      <Project>{0651fb7e-69c3-4927-b66f-fb44a28aecff}</Project>
+      <Name>EngineOverflow.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EngineOverflow.Data.Models\EngineOverflow.Data.Models.csproj">
       <Project>{34ca6432-b615-4bc7-b4f2-c53015487288}</Project>
       <Name>EngineOverflow.Data.Models</Name>
