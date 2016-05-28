@@ -2,9 +2,39 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div>
+<div class="container">
     @foreach (var post in Model)
     {
-        <p>@post.Title</p>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="well text-center">
+                    <div class="row">0</div>
+                    <div class="row">answers</div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="well text-center">
+                    <div class="row">0</div>
+                    <div class="row">answers</div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <h4>
+                        <a href="/123/asasd">@post.Title</a>
+                    </h4>
+                </div>
+                <div class="row">
+                    <p>asked 35 minutes ago in Audi Engines by delyan (100 points)</p>
+                </div>
+                <div class="row">
+                    <span class="label label-default">audi</span>
+                    <span class="label label-default">engine</span>
+                    <span class="label label-default">problem</span>
+                    <span class="label label-default">ask</span>
+                </div>
+            </div>
+        </div>
+        <hr />
     }
 </div>
