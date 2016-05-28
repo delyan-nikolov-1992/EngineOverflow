@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper.QueryableExtensions;
+using EngineOverflow.Web.ViewModels.Home;
 
 namespace EngineOverflow.Web.Controllers
 {
@@ -20,7 +22,7 @@ namespace EngineOverflow.Web.Controllers
 
         public ActionResult Index()
         {
-            var posts = this.posts.All();
+            var posts = this.posts.All().ProjectTo<IndexBlogPostViewModel>();
 
             return View(posts);
         }
