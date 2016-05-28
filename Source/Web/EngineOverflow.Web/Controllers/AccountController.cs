@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EngineOverflow.Web.Models;
+using EngineOverflow.Data.Models;
 
 namespace EngineOverflow.Web.Controllers
 {

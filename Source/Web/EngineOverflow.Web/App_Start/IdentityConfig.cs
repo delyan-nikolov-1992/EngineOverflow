@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using EngineOverflow.Web.Models;
+using EngineOverflow.Data.Models;
+using EngineOverflow.Data;
 
 namespace EngineOverflow.Web
 {

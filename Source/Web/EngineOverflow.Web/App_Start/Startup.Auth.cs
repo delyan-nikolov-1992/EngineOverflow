@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using EngineOverflow.Web.Models;
+using EngineOverflow.Data;
+using EngineOverflow.Data.Models;
 
 namespace EngineOverflow.Web
 {

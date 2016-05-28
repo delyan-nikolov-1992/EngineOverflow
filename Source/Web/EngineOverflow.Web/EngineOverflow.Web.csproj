@@ -166,7 +166,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -247,6 +246,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\EngineOverflow.Data.Models\EngineOverflow.Data.Models.csproj">
+      <Project>{34ca6432-b615-4bc7-b4f2-c53015487288}</Project>
+      <Name>EngineOverflow.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\EngineOverflow.Data\EngineOverflow.Data.csproj">
+      <Project>{38e33ebe-0df7-4ba5-9eed-973d876041bc}</Project>
+      <Name>EngineOverflow.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
