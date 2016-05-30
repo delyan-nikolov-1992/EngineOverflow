@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace EngineOverflow.Web.ViewModels.Account
+﻿namespace EngineOverflow.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class VerifyCodeViewModel
     {
         [Required]
@@ -14,6 +10,7 @@ namespace EngineOverflow.Web.ViewModels.Account
         [Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
+
         public string ReturnUrl { get; set; }
 
         [Display(Name = "Remember this browser?")]

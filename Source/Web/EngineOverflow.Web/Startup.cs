@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using EngineOverflow.Web;
+using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(EngineOverflow.Web.Startup))]
+[assembly: OwinStartupAttribute(typeof(Startup))]
+
 namespace EngineOverflow.Web
 {
     public partial class Startup

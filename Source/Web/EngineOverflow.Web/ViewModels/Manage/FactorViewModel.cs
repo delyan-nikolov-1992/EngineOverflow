@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace EngineOverflow.Web.ViewModels.Manage
+﻿namespace EngineOverflow.Web.ViewModels.Manage
 {
     public class FactorViewModel
     {

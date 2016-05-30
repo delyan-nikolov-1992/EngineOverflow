@@ -1,12 +1,15 @@
-﻿using EngineOverflow.Data.Models;
-using EngineOverflow.Data.Migrations;
-using EngineOverflow.Data.Common.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
-using System.Linq;
-using System;
-namespace EngineOverflow.Data
+﻿namespace EngineOverflow.Data
 {
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+
+    using EngineOverflow.Data.Common.Models;
+    using EngineOverflow.Data.Migrations;
+    using EngineOverflow.Data.Models;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -15,14 +18,14 @@ namespace EngineOverflow.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
+        public IDbSet<Tag> Tags { get; set; }
+
+        public IDbSet<Post> Posts { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-        public IDbSet<Tag> Tags { get; set; }
-
-        public IDbSet<Post> Posts { get; set; }
 
         public override int SaveChanges()
         {

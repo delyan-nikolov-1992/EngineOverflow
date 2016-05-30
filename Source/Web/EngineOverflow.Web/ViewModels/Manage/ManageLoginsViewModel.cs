@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace EngineOverflow.Web.ViewModels.Manage
+﻿namespace EngineOverflow.Web.ViewModels.Manage
 {
+    using System.Collections.Generic;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.Owin.Security;
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
+
         public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 }

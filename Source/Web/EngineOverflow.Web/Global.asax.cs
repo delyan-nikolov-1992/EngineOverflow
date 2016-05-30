@@ -1,16 +1,14 @@
-﻿using EngineOverflow.Web.Infrastructure.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-
-namespace EngineOverflow.Web
+﻿namespace EngineOverflow.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
+    using EngineOverflow.Web.Infrastructure.Mapping;
+
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {

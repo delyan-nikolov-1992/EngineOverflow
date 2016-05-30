@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EngineOverflow.Web.ViewModels.Account
+﻿namespace EngineOverflow.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

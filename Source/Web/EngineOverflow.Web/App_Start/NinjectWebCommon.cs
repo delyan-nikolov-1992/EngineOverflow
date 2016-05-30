@@ -4,19 +4,20 @@
 namespace EngineOverflow.Web
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
+
+    using EngineOverflow.Data;
+    using EngineOverflow.Data.Common.Repository;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Data.Entity;
-    using EngineOverflow.Data;
-    using EngineOverflow.Data.Common.Repository;
 
     public static class NinjectWebCommon
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -25,7 +26,7 @@ namespace EngineOverflow.Web
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            Bootstrapper.Initialize(CreateKernel);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace EngineOverflow.Web
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
 
         /// <summary>

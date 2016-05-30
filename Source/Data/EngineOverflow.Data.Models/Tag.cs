@@ -1,14 +1,11 @@
-﻿using EngineOverflow.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EngineOverflow.Data.Models
+﻿namespace EngineOverflow.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    using EngineOverflow.Data.Common.Models;
+
     public class Tag : AuditInfo, IDeletableEntity
     {
         [Key]
