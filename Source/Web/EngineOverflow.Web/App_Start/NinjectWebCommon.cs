@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(EngineOverflow.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(EngineOverflow.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(EngineOverflow.Web.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(EngineOverflow.Web.NinjectWebCommon), "Stop")]
 
-namespace EngineOverflow.Web.App_Start
+namespace EngineOverflow.Web
 {
     using System;
     using System.Web;
