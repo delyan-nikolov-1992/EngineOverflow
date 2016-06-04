@@ -14,6 +14,7 @@ namespace EngineOverflow.Web
 
     using Ninject;
     using Ninject.Web.Common;
+    using EngineOverflow.Data.Models;
 
     public static class NinjectWebCommon
     {
@@ -66,6 +67,8 @@ namespace EngineOverflow.Web
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
+
+            kernel.Bind(typeof(IRepository<Post>)).To(typeof(IDeletableEntityRepository<Post>));
 
             kernel.Bind(typeof(IDeletableEntityRepository<>))
                 .To(typeof(DeletableEntityRepository<>));
