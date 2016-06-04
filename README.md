@@ -1,2 +1,2 @@
 # EngineOverflow
-Web портал - професионален форум/социална мрежа за автомобилна информация
+Web portal - a professional forum/social network for automotive information
