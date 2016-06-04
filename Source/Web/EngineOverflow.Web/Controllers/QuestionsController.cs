@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using EngineOverflow.Web.Infrastructure;
+using Microsoft.AspNet.Identity;
 
 namespace EngineOverflow.Web.Controllers
 {
@@ -46,6 +47,7 @@ namespace EngineOverflow.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Ask()
         {
             var model = new AskInputModel();
@@ -54,16 +56,20 @@ namespace EngineOverflow.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Ask(AskInputModel input)
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.Identity.GetUserId();
+
                 var post = new Post
                 {
                     Title = input.Title,
-                    Content = sanitizer.Sanitize(input.Content)
+                    Content = sanitizer.Sanitize(input.Content),
+                    AuthorId = userId
                     // TODO: Tags
-                    // TODO: Author
                 };
 
                 this.posts.Add(post);
