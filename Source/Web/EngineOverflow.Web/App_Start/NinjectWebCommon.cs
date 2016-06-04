@@ -15,6 +15,7 @@ namespace EngineOverflow.Web
     using Ninject;
     using Ninject.Web.Common;
     using EngineOverflow.Data.Models;
+    using EngineOverflow.Web.Infrastructure;
 
     public static class NinjectWebCommon
     {
@@ -74,6 +75,8 @@ namespace EngineOverflow.Web
                 .To(typeof(DeletableEntityRepository<>));
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+
+            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }
     }
 }
