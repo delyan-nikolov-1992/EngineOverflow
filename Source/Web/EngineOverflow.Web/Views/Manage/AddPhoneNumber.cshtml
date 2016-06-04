@@ -1,10 +1,8 @@
-﻿@model EngineOverflow.Web.Models.AddPhoneNumberViewModel
+﻿@model EngineOverflow.Web.ViewModels.Manage.AddPhoneNumberViewModel
 @{
     ViewBag.Title = "Phone Number";
 }
-
 <h2>@ViewBag.Title.</h2>
-
 @using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
@@ -23,7 +21,6 @@
         </div>
     </div>
 }
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

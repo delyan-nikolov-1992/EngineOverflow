@@ -13,6 +13,8 @@
         public string Title { get; set; }
 
         // TODO: Author,
+        public string Content { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

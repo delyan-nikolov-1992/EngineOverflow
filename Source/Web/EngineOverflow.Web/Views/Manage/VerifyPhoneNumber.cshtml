@@ -1,10 +1,8 @@
-﻿@model EngineOverflow.Web.Models.VerifyPhoneNumberViewModel
+﻿@model EngineOverflow.Web.ViewModels.Manage.VerifyPhoneNumberViewModel
 @{
     ViewBag.Title = "Verify Phone Number";
 }
-
 <h2>@ViewBag.Title.</h2>
-
 @using (Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
@@ -25,7 +23,6 @@
         </div>
     </div>
 }
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
