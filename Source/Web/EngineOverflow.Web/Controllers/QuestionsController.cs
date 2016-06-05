@@ -1,5 +1,7 @@
 ﻿namespace EngineOverflow.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -12,8 +14,6 @@
     using EngineOverflow.Web.ViewModels.Questions;
 
     using Microsoft.AspNet.Identity;
-    using System.Collections.Generic;
-    using System;
 
     public class QuestionsController : Controller
     {
@@ -68,16 +68,21 @@
                 return this.View(input);
             }
 
-            var postTags = input.Tags.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var uniquePostTags = new HashSet<string>(postTags);
+            var tagNames = input.Tags.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var uniqueTagNames = new HashSet<string>(tagNames);
+            var postTags = new List<Tag>();
 
-            foreach (var uniquesPostTag in uniquePostTags)
+            foreach (var uniquesTagName in uniqueTagNames)
             {
-                if (!this.tags.All().Where(x => x.Name == uniquesPostTag).Any())
+                var tag = this.tags.All().Where(x => x.Name == uniquesTagName).FirstOrDefault();
+
+                if (tag == null)
                 {
-                    var tag = new Tag { Name = uniquesPostTag };
+                    tag = new Tag { Name = uniquesTagName };
                     this.tags.Add(tag);
                 }
+
+                postTags.Add(tag);
             }
 
             var userId = this.User.Identity.GetUserId();
@@ -89,13 +94,9 @@
                 AuthorId = userId
             };
 
-            this.posts.Add(post);
-            this.tags.SaveChanges();
-            post.Tags = this.tags.All().Where(x => uniquePostTags.Contains(x.Name)).ToList();
-
-            foreach (var dido in post.Tags)
+            foreach (var postTag in postTags)
             {
-                dido.Posts.Add(post);
+                postTag.Posts.Add(post);
             }
 
             this.tags.SaveChanges();
