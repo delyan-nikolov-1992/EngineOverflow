@@ -1,13 +1,13 @@
-﻿namespace EngineOverflow.Web.InputModels.Questions
+﻿namespace EngineOverflow.Web.InputModels.Feedback
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
-    public class AskInputModel
+    public class CreateInputModel
     {
         [Required]
         [Display(Name = "Title")]
-        [StringLength(100)]
+        [StringLength(20)]
         public string Title { get; set; }
 
         [Required]
@@ -16,10 +16,5 @@
         [DataType("tinymce_full")]
         [UIHint("tinymce_full")]
         public string Content { get; set; }
-
-        // TODO: Create custom validation for the tags
-        [Required]
-        [Display(Name = "Tags")]
-        public string Tags { get; set; }
     }
 }
