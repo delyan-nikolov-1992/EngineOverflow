@@ -1,6 +1,7 @@
 ﻿@model EngineOverflow.Web.ViewModels.Questions.QuestionDisplayViewModel
 @{
     ViewBag.Title = Model.Title;
+    TempData["PostId"] = Model.Id;
 }
 <h1>@ViewBag.Title</h1>
 @Html.Raw(Model.Content)
@@ -13,3 +14,5 @@
     <br />
     <p class="text-right">Asked at <i>@feedback.CreatedOn</i> by <b>@feedback.AuthorUserNameDisplay</b></p>
 }
+<hr />
+@Html.Partial("~/Views/Feedback/Create.cshtml", new EngineOverflow.Web.InputModels.Feedback.CreateInputModel())

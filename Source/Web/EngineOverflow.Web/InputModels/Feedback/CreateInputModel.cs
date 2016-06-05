@@ -7,7 +7,6 @@
     {
         [Required]
         [AllowHtml]
-        [Display(Name = "Content")]
         [DataType("tinymce_full")]
         [UIHint("tinymce_full")]
         public string Content { get; set; }

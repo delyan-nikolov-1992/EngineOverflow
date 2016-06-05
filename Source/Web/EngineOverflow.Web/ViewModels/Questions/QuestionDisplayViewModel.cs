@@ -8,6 +8,8 @@
 
     public class QuestionDisplayViewModel : IMapFrom<Post>
     {
+        public int Id { get; set; }
+
         [MaxLength(100)]
         [Required]
         public string Title { get; set; }

@@ -1,5 +1,6 @@
 ﻿namespace EngineOverflow.Web.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     using EngineOverflow.Data.Common.Repository;
@@ -21,12 +22,6 @@
             this.sanitizer = sanitizer;
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return this.View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateInputModel input)
@@ -38,7 +33,8 @@
 
             var feedback = new Feedback()
             {
-                Content = this.sanitizer.Sanitize(input.Content)
+                Content = this.sanitizer.Sanitize(input.Content),
+                PostId = Convert.ToInt32(TempData["PostId"])
             };
 
             if (this.User.Identity.IsAuthenticated)
@@ -51,7 +47,7 @@
 
             this.TempData["Notification"] = "Thank you for your feedback!";
 
-            return this.Redirect("/");
+            return this.Redirect(Request.UrlReferrer.ToString());
         }
     }
 }
