@@ -1,11 +1,11 @@
 ﻿namespace EngineOverflow.Data.Common.Repository
 {
+    using System;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
 
     using EngineOverflow.Data.Common.Models;
-    using System;
-    using System.Data.Entity.Infrastructure;
 
     public class DeletableEntityRepository<T> : GenericRepository<T>, IDeletableEntityRepository<T>
         where T : class, IDeletableEntity

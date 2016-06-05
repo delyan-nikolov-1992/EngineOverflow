@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace EngineOverflow.Web.InputModels.Questions
+﻿namespace EngineOverflow.Web.InputModels.Questions
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public class AskInputModel
     {
         [Required]
