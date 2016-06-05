@@ -68,6 +68,18 @@
                 return this.View(input);
             }
 
+            var postTags = input.Tags.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var uniquePostTags = new HashSet<string>(postTags);
+
+            foreach (var uniquesPostTag in uniquePostTags)
+            {
+                if (!this.tags.All().Where(x => x.Name == uniquesPostTag).Any())
+                {
+                    var tag = new Tag { Name = uniquesPostTag };
+                    this.tags.Add(tag);
+                }
+            }
+
             var userId = this.User.Identity.GetUserId();
 
             var post = new Post
@@ -78,22 +90,12 @@
             };
 
             this.posts.Add(post);
-            this.posts.SaveChanges();
+            this.tags.SaveChanges();
+            post.Tags = this.tags.All().Where(x => uniquePostTags.Contains(x.Name)).ToList();
 
-            var postTags = input.Tags.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var uniquePostTags = new HashSet<string>(postTags);
-
-            foreach (var uniquesPostTag in uniquePostTags)
+            foreach (var dido in post.Tags)
             {
-                var tag = this.tags.All().Where(x => x.Name == uniquesPostTag).FirstOrDefault();
-
-                if (tag == null)
-                {
-                    tag = new Tag { Name = uniquesPostTag };
-                    this.tags.Add(tag);
-                }
-
-                tag.Posts.Add(post);
+                dido.Posts.Add(post);
             }
 
             this.tags.SaveChanges();
