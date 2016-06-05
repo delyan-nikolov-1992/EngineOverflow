@@ -24,6 +24,7 @@
         [Required]
         public string Content { get; set; }
 
+        [Required]
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
