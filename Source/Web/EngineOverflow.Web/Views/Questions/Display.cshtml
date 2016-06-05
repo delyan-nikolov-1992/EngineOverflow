@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = Model.Title;
 }
-
 <h1>@ViewBag.Title</h1>
 @Html.Raw(Model.Content)
+<h4><b>@Model.Feedbacks.Count() Answers</b></h4>
+@foreach (var feedback in Model.Feedbacks)
+{
+    <hr />
+    @Html.Raw(feedback.Content)
+    <br />
+    <br />
+    <p class="text-right">Asked at <i>@feedback.CreatedOn</i> by <b>@feedback.AuthorUserNameDisplay</b></p>
+}

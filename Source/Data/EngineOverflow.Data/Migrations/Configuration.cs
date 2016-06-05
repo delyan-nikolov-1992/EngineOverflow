@@ -27,21 +27,6 @@ namespace EngineOverflow.Data.Migrations
                 context.SaveChanges();
             }
 
-            if (!context.Feedbacks.Any())
-            {
-                for (int i = 1; i <= 18; i++)
-                {
-                    var feedback = new Feedback
-                    {
-                        Content = string.Format("Feedback <b>content</b> {0}", i)
-                    };
-
-                    context.Feedbacks.Add(feedback);
-                }
-
-                context.SaveChanges();
-            }
-
             if (!context.Tags.Any())
             {
                 var tagList = new List<Tag>();
@@ -74,6 +59,18 @@ namespace EngineOverflow.Data.Migrations
                     }
 
                     context.Posts.Add(post);
+
+
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        var feedback = new Feedback
+                        {
+                            Content = string.Format("Feedback <b>content</b> {0}", j),
+                            Post = post
+                        };
+
+                        context.Feedbacks.Add(feedback);
+                    }
                 }
 
                 context.SaveChanges();

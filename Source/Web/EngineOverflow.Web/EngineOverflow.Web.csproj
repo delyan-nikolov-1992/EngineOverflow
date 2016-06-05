@@ -214,6 +214,7 @@
     <Compile Include="ViewModels\Home\IndexBlogPostViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Questions\FeedbackDisplayViewModel.cs" />
     <Compile Include="ViewModels\Questions\QuestionDisplayViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

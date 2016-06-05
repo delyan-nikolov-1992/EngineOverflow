@@ -18,6 +18,10 @@
 
         public virtual ApplicationUser Author { get; set; }
 
+        public int PostId { get; set; }
+
+        public virtual Post Post { get; set; }
+
         [Index]
         public bool IsDeleted { get; set; }
 

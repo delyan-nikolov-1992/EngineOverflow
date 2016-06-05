@@ -12,6 +12,7 @@
         public Post()
         {
             this.Tags = new HashSet<Tag>();
+            this.Feedbacks = new HashSet<Feedback>();
         }
 
         [Key]
@@ -35,5 +36,7 @@
         public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }
+
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }
