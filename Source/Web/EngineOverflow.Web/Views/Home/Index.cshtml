@@ -21,17 +21,17 @@
             <div class="col-md-10">
                 <div class="row">
                     <h4>
-                        <a href="/123/asasd">@post.Title</a>
+                        <a href="@post.Url">@post.Title</a>
                     </h4>
                 </div>
                 <div class="row">
                     <p>asked 35 minutes ago in Audi Engines by delyan (100 points)</p>
                 </div>
                 <div class="row">
-                    <span class="label label-default">audi</span>
-                    <span class="label label-default">engine</span>
-                    <span class="label label-default">problem</span>
-                    <span class="label label-default">ask</span>
+                    @foreach (var tag in post.Tags)
+                    {
+                        <span class="label label-default">@tag.Name</span>
+                    }
                 </div>
             </div>
         </div>

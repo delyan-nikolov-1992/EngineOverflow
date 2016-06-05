@@ -1,12 +1,18 @@
 ﻿namespace EngineOverflow.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using EngineOverflow.Data.Common.Models;
 
     public class Post : AuditInfo, IDeletableEntity
     {
+        public Post()
+        {
+            this.Tags = new HashSet<Tag>();
+        }
+
         public int Id { get; set; }
 
         [MaxLength(100)]
@@ -21,5 +27,7 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
