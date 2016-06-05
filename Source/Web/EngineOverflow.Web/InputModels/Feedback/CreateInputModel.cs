@@ -6,11 +6,6 @@
     public class CreateInputModel
     {
         [Required]
-        [Display(Name = "Title")]
-        [StringLength(20)]
-        public string Title { get; set; }
-
-        [Required]
         [AllowHtml]
         [Display(Name = "Content")]
         [DataType("tinymce_full")]

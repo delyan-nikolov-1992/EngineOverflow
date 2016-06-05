@@ -33,7 +33,6 @@ namespace EngineOverflow.Data.Migrations
                 {
                     var feedback = new Feedback
                     {
-                        Title = string.Format("Feedback {0}", i),
                         Content = string.Format("Feedback <b>content</b> {0}", i)
                     };
 

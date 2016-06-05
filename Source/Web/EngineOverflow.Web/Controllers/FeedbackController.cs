@@ -38,8 +38,7 @@
 
             var feedback = new Feedback()
             {
-                Content = this.sanitizer.Sanitize(input.Content),
-                Title = input.Title
+                Content = this.sanitizer.Sanitize(input.Content)
             };
 
             if (this.User.Identity.IsAuthenticated)
