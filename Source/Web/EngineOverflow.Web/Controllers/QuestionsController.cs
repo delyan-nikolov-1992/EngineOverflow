@@ -101,7 +101,7 @@
 
             this.tags.SaveChanges();
 
-            return this.RedirectToAction("Display", new { id = post.Id, url = "new" });
+            return this.RedirectToAction("Display", new { id = post.Id, url = post.Title.ToLower().Replace(" ", "-") });
         }
     }
 }
