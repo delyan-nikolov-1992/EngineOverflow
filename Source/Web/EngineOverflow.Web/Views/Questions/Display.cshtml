@@ -5,14 +5,8 @@
 }
 <h1>@ViewBag.Title</h1>
 @Html.Raw(Model.Content)
-<h4><b>@Model.Feedbacks.Count() Answers</b></h4>
-@foreach (var feedback in Model.Feedbacks)
-{
-    <hr />
-    @Html.Raw(feedback.Content)
-    <br />
-    <br />
-    <p class="text-right">Asked at <i>@feedback.CreatedOn</i> by <b>@feedback.AuthorUserNameDisplay</b></p>
-}
+<h4><b>@Model.FeedbacksCount Answers</b></h4>
 <hr />
+
+@Html.Partial("~/Views/Questions/PageableFeedbacks.cshtml", Model.FeedbackListViewModel)
 @Html.Partial("~/Views/Feedback/Create.cshtml", new EngineOverflow.Web.InputModels.Feedback.CreateInputModel())

@@ -14,18 +14,27 @@
     using EngineOverflow.Web.ViewModels.Questions;
 
     using Microsoft.AspNet.Identity;
+    using EngineOverflow.Web.ViewModels.PageableFeedbackList;
 
     public class QuestionsController : Controller
     {
+        private const int ItemsPerPage = 4;
+
         private readonly IDeletableEntityRepository<Post> posts;
         private readonly IDeletableEntityRepository<Tag> tags;
+        private readonly IDeletableEntityRepository<Feedback> feedbacks;
 
         private readonly ISanitizer sanitizer;
 
-        public QuestionsController(IDeletableEntityRepository<Post> posts, IDeletableEntityRepository<Tag> tags, ISanitizer sanitizer)
+        public QuestionsController(
+            IDeletableEntityRepository<Post> posts,
+            IDeletableEntityRepository<Tag> tags,
+            IDeletableEntityRepository<Feedback> feedbacks,
+            ISanitizer sanitizer)
         {
             this.posts = posts;
             this.tags = tags;
+            this.feedbacks = feedbacks;
             this.sanitizer = sanitizer;
         }
 
@@ -39,6 +48,26 @@
             {
                 return this.HttpNotFound("No such post!");
             }
+
+            var postFeedbacks = this.feedbacks.All().Where(x => x.PostId == id);
+            var allItemsCount = postFeedbacks.Count();
+            var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)ItemsPerPage);
+            var itemsToSkip = (page - 1) * ItemsPerPage;
+
+            var feedbacks = postFeedbacks
+                .OrderBy(x => x.CreatedOn)
+                .ThenBy(x => x.Id)
+                .Skip(itemsToSkip).Take(ItemsPerPage)
+                .ProjectTo<FeedbackDisplayViewModel>().ToList();
+
+            var feedbackViewModel = new FeedbackListViewModel
+            {
+                CurrentPage = page,
+                TotalPages = totalPages,
+                Feedbacks = feedbacks
+            };
+
+            postViewModel.FeedbackListViewModel = feedbackViewModel;
 
             return this.View(postViewModel);
         }

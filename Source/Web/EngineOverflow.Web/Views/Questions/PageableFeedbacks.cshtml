@@ -1,0 +1,43 @@
+﻿@model EngineOverflow.Web.ViewModels.PageableFeedbackList.FeedbackListViewModel
+
+@foreach (var feedback in Model.Feedbacks)
+{
+    @Html.Raw(feedback.SanitizedContent)
+    <br />
+    <br />
+    <p class="text-right">Asked at <i>@feedback.CreatedOn</i> by <b>@feedback.AuthorUserNameDisplay</b></p>
+    <hr />
+}
+
+<nav>
+    <ul class="pagination">
+        @if (Model.CurrentPage > 1)
+        {
+            <li>
+                <a href="/questions/1/post-title-1?page=@(Model.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            var className = string.Empty;
+
+            if (Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+
+            <li class="@className"><a href="/questions/1/post-title-1?page=@i">@i</a></li>
+        }
+
+        @if (Model.CurrentPage == Model.TotalPages)
+        {
+            <li>
+                <a href="/questions/1/post-title-1?page=@(Model.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

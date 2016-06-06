@@ -1,10 +1,10 @@
 ﻿namespace EngineOverflow.Web.ViewModels.Questions
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using EngineOverflow.Data.Models;
     using EngineOverflow.Web.Infrastructure.Mapping;
+    using EngineOverflow.Web.ViewModels.PageableFeedbackList;
 
     public class QuestionDisplayViewModel : IMapFrom<Post>
     {
@@ -17,6 +17,8 @@
         [Required]
         public string Content { get; set; }
 
-        public IEnumerable<FeedbackDisplayViewModel> Feedbacks { get; set; }
+        public int FeedbacksCount { get; set; }
+
+        public FeedbackListViewModel FeedbackListViewModel { get; set; }
     }
 }

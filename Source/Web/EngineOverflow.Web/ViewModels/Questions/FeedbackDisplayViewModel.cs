@@ -5,9 +5,17 @@
 
     using EngineOverflow.Data.Models;
     using EngineOverflow.Web.Infrastructure.Mapping;
+    using EngineOverflow.Web.Infrastructure;
 
     public class FeedbackDisplayViewModel : IMapFrom<Feedback>
     {
+        private ISanitizer sanitizer;
+
+        public FeedbackDisplayViewModel()
+        {
+            this.sanitizer = new HtmlSanitizerAdapter();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -16,6 +24,14 @@
         public string AuthorUserName { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public string SanitizedContent
+        {
+            get
+            {
+                return this.sanitizer.Sanitize(this.Content);
+            }
+        }
 
         public string AuthorUserNameDisplay
         {
