@@ -187,7 +187,6 @@
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PageableFeedbackListController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,7 +214,7 @@
     <Compile Include="ViewModels\Home\IndexBlogPostViewModel.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\PageableFeedbackList\FeedbackListViewModel.cs" />
+    <Compile Include="ViewModels\Questions\FeedbackListViewModel.cs" />
     <Compile Include="ViewModels\Questions\FeedbackDisplayViewModel.cs" />
     <Compile Include="ViewModels\Questions\QuestionDisplayViewModel.cs" />
   </ItemGroup>
@@ -462,7 +461,6 @@
     <Content Include="Views\Questions\Display.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Questions\PageableFeedbacks.cshtml" />
-    <Content Include="Views\PageableFeedbackList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

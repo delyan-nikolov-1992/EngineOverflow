@@ -14,7 +14,6 @@
     using EngineOverflow.Web.ViewModels.Questions;
 
     using Microsoft.AspNet.Identity;
-    using EngineOverflow.Web.ViewModels.PageableFeedbackList;
 
     public class QuestionsController : Controller
     {
@@ -62,6 +61,8 @@
 
             var feedbackViewModel = new FeedbackListViewModel
             {
+                PostId = id,
+                PostTitle = postViewModel.Title,
                 CurrentPage = page,
                 TotalPages = totalPages,
                 Feedbacks = feedbacks
