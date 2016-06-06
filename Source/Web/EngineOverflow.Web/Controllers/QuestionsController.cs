@@ -17,7 +17,7 @@
 
     public class QuestionsController : Controller
     {
-        private const int ItemsPerPage = 10;
+        private const int ItemsPerPage = 3;
 
         private readonly IDeletableEntityRepository<Post> posts;
         private readonly IDeletableEntityRepository<Tag> tags;
