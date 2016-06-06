@@ -22,6 +22,8 @@
 
         public IEnumerable<IndexBlogPostTagViewModel> Tags { get; set; }
 
+        public int FeedbacksCount { get; set; }
+
         public string Url
         {
             get
