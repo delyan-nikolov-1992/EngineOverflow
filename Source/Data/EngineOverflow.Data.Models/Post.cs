@@ -13,6 +13,7 @@
         {
             this.Tags = new HashSet<Tag>();
             this.Feedbacks = new HashSet<Feedback>();
+            this.Votes = new HashSet<PostVote>();
         }
 
         [Key]
@@ -25,7 +26,6 @@
         [Required]
         public string Content { get; set; }
 
-        [Required]
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
@@ -38,5 +38,7 @@
         public virtual ICollection<Tag> Tags { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        public virtual ICollection<PostVote> Votes { get; set; }
     }
 }
