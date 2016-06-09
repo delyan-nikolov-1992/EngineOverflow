@@ -48,7 +48,15 @@ namespace EngineOverflow.Web.Controllers
             }
             else
             {
-                vote.Type = (VoteType)voteType;
+                if (vote.Type == (VoteType)voteType)
+                {
+                    vote.Type = VoteType.Neutral;
+                }
+                else
+                {
+
+                    vote.Type = (VoteType)voteType;
+                }
             }
 
             this.votes.SaveChanges();
