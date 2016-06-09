@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-md-1">
                 <div class="well text-center">
-                    <div class="row" data-action="up"><span class="glyphicon glyphicon-thumbs-up"></span></div>
-                    <div class="row">@post.VotesCount</div>
-                    <div class="row" data-action="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
+                    <div class="row" data-id="@post.Id" data-action="up"><span class="glyphicon glyphicon-thumbs-up"></span></div>
+                    <div class="row" data-id="@post.Id" data-action="votesCount">@post.VotesCount</div>
+                    <div class="row" data-id="@post.Id" data-action="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
                 </div>
             </div>
             <div class="col-md-1">
@@ -44,3 +44,16 @@
         cursor: pointer;
     }
 </style>
+@section scripts {
+    <script>
+        $("div[data-action='up']").click(function () {
+            var id = $(this).attr("data-id");
+            $.post("/Votes/Vote", { postId: id, voteType: 1 },
+                function (data) {
+                    var newVotesCount = data.Count;
+                    $("div[data-action='votesCount'][data-id='" + id + "']")
+                        .html(newVotesCount);
+                })
+        });
+    </script>
+}

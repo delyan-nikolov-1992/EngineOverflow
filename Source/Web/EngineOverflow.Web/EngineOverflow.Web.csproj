@@ -463,9 +463,7 @@
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Questions\PageableFeedbacks.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Votes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

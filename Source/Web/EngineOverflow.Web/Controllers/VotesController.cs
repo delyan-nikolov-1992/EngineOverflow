@@ -14,11 +14,12 @@ namespace EngineOverflow.Web.Controllers
     {
         private readonly IDeletableEntityRepository<PostVote> votes;
 
-        public VotesController(IDeletableEntityRepository<Feedback> votes)
+        public VotesController(IDeletableEntityRepository<PostVote> votes)
         {
             this.votes = votes;
         }
 
+        [HttpPost]
         public ActionResult Vote(int postId, int voteType)
         {
             if (voteType > 1)
@@ -53,7 +54,7 @@ namespace EngineOverflow.Web.Controllers
             this.votes.SaveChanges();
 
             var postVotes = this.votes.All()
-                .Where(x => x.PostId == postid)
+                .Where(x => x.PostId == postId)
                 .Sum(x => (int)x.Type);
 
             return Json(new { Count = postVotes });
