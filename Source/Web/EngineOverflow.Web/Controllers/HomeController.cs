@@ -1,6 +1,7 @@
 ﻿namespace EngineOverflow.Web.Controllers
 {
     using System.Web.Mvc;
+    using System.Linq;
 
     using AutoMapper.QueryableExtensions;
 
@@ -19,7 +20,11 @@
 
         public ActionResult Index()
         {
-            var model = this.posts.All().ProjectTo<IndexBlogPostViewModel>();
+            var model = this.posts.All()
+                .OrderBy(x => x.Votes.Sum(y => (int)y.Type))
+                .ThenBy(x => x.CreatedOn)
+                .ThenBy(x => x.Id)
+                .ProjectTo<IndexBlogPostViewModel>();
 
             return this.View(model);
         }

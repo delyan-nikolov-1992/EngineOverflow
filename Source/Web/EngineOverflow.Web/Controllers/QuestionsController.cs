@@ -37,7 +37,6 @@
             this.sanitizer = sanitizer;
         }
 
-        // /questions/5/difference-between-gasoline-engine-and-diesel-engine
         public ActionResult Display(int id, string url, int page = 1)
         {
             var postViewModel = this.posts.All().Where(x => x.Id == id)
@@ -56,7 +55,8 @@
             var feedbacks = postFeedbacks
                 .OrderBy(x => x.CreatedOn)
                 .ThenBy(x => x.Id)
-                .Skip(itemsToSkip).Take(ItemsPerPage)
+                .Skip(itemsToSkip)
+                .Take(ItemsPerPage)
                 .ProjectTo<FeedbackDisplayViewModel>().ToList();
 
             var feedbackViewModel = new FeedbackListViewModel
