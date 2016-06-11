@@ -18,9 +18,16 @@
             this.posts = posts;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string tags = null)
         {
-            var model = this.posts.All()
+            var posts = this.posts.All();
+
+            if (tags != null)
+            {
+                posts = posts.Where(x => x.Tags.Any(y => tags.Contains(y.Name)));
+            }
+
+            var model = posts
                 .OrderByDescending(x => x.CreatedOn)
                 .ThenBy(x => x.Id)
                 .ProjectTo<IndexBlogPostViewModel>();

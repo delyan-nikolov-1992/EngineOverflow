@@ -75,12 +75,6 @@
             return this.View(postViewModel);
         }
 
-        // /questions/tagged/steam
-        public ActionResult GetByTag(string tag)
-        {
-            return this.Content(tag);
-        }
-
         [HttpGet]
         [Authorize]
         public ActionResult Ask()
