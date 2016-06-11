@@ -70,9 +70,13 @@
         function voteClick(id, voteType) {
             $.post("/Votes/PostVote", { postId: id, voteType: voteType },
                 function (data) {
-                    var newVotesCount = data.Count;
-                    $("div[data-action='votesCount'][data-id='" + id + "']")
-                        .html(newVotesCount);
+                    if (data.Error) {
+                        alert(data.Error);
+                    } else {
+                        var newVotesCount = data.Count;
+                        $("div[data-action='votesCount'][data-id='" + id + "']")
+                            .html(newVotesCount);
+                    }
                 });
         }
     </script>
