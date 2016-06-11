@@ -22,6 +22,21 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Ask question", "Ask", "Questions")</li>
                 </ul>
+                @*<div class="nav navbar-nav">
+                        <input type="text" placeholder="Search by tags, separated by comma" style="width: 300px; max-width: 300px;">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>*@
+
+                <div class="nav navbar-nav inner-addon left-addon" style="top: 10px;">
+                    <i class="glyphicon glyphicon-search" style="top: -2px;"></i>
+                    <input type="text" placeholder="Search by tags, separated by comma" style="width: 300px; max-width: 300px;" />
+                </div>
+
+                @*<div class="search-container">
+                        <form id="search" action="/search" method="get" autocomplete="off">
+                            <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240" style="width: 194px; max-width: 194px;">
+                        </form>
+                    </div>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
