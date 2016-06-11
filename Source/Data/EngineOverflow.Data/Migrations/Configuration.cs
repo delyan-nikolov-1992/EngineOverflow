@@ -60,7 +60,6 @@ namespace EngineOverflow.Data.Migrations
 
                     context.Posts.Add(post);
 
-
                     for (int j = 1; j <= 5; j++)
                     {
                         var feedback = new Feedback

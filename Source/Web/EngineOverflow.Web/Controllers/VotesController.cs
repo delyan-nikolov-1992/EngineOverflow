@@ -1,14 +1,13 @@
-﻿using EngineOverflow.Data.Common.Repository;
-using EngineOverflow.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-
-namespace EngineOverflow.Web.Controllers
+﻿namespace EngineOverflow.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using EngineOverflow.Data.Common.Repository;
+    using EngineOverflow.Data.Models;
+
+    using Microsoft.AspNet.Identity;
+
     [Authorize]
     public class VotesController : Controller
     {
@@ -54,7 +53,6 @@ namespace EngineOverflow.Web.Controllers
                 }
                 else
                 {
-
                     vote.Type = (VoteType)voteType;
                 }
             }
@@ -65,7 +63,7 @@ namespace EngineOverflow.Web.Controllers
                 .Where(x => x.PostId == postId)
                 .Sum(x => (int)x.Type);
 
-            return Json(new { Count = postVotes });
+            return this.Json(new { Count = postVotes });
         }
     }
 }

@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    using AutoMapper;
 
     using EngineOverflow.Data.Models;
     using EngineOverflow.Web.Infrastructure.Mapping;
-    using AutoMapper;
-    using System.Linq;
 
     public class IndexBlogPostViewModel : IMapFrom<Post>, IHaveCustomMappings
     {

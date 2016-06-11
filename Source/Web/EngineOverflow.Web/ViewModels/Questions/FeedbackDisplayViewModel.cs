@@ -4,8 +4,8 @@
     using System.ComponentModel.DataAnnotations;
 
     using EngineOverflow.Data.Models;
-    using EngineOverflow.Web.Infrastructure.Mapping;
     using EngineOverflow.Web.Infrastructure;
+    using EngineOverflow.Web.Infrastructure.Mapping;
 
     public class FeedbackDisplayViewModel : IMapFrom<Feedback>
     {

@@ -1,11 +1,7 @@
-﻿using EngineOverflow.Web.ViewModels.Questions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace EngineOverflow.Web.ViewModels.Questions
+﻿namespace EngineOverflow.Web.ViewModels.Questions
 {
+    using System.Collections.Generic;
+
     public class FeedbackListViewModel
     {
         public int PostId { get; set; }
