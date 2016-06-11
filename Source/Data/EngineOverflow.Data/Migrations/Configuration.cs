@@ -11,8 +11,6 @@ namespace EngineOverflow.Data.Migrations
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-
-            // TODO: Remove in production
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
