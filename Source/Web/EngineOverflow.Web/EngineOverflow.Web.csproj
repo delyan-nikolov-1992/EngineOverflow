@@ -461,7 +461,6 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Questions\Display.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
-    <Content Include="Views\Questions\PageableFeedbacks.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

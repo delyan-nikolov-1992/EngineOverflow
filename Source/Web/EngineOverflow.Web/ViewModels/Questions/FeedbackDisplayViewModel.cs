@@ -2,12 +2,15 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    using AutoMapper;
 
     using EngineOverflow.Data.Models;
     using EngineOverflow.Web.Infrastructure;
     using EngineOverflow.Web.Infrastructure.Mapping;
 
-    public class FeedbackDisplayViewModel : IMapFrom<Feedback>
+    public class FeedbackDisplayViewModel : IMapFrom<Feedback>, IHaveCustomMappings
     {
         private ISanitizer sanitizer;
 
@@ -25,6 +28,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public int VotesCount { get; set; }
+
         public string SanitizedContent
         {
             get
@@ -39,6 +44,14 @@
             {
                 return string.IsNullOrWhiteSpace(this.AuthorUserName) ? "Anonymous user" : this.AuthorUserName;
             }
+        }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            Mapper.CreateMap<Feedback, FeedbackDisplayViewModel>()
+                .ForMember(
+                    x => x.VotesCount,
+                    opt => opt.MapFrom(x => x.Votes.Any() ? x.Votes.Sum(y => (int)y.Type) : 0));
         }
     }
 }

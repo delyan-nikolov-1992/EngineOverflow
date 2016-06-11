@@ -11,15 +11,17 @@
     [Authorize]
     public class VotesController : Controller
     {
-        private readonly IDeletableEntityRepository<PostVote> votes;
+        private readonly IDeletableEntityRepository<PostVote> postVotes;
+        private readonly IDeletableEntityRepository<FeedbackVote> feedbackVotes;
 
-        public VotesController(IDeletableEntityRepository<PostVote> votes)
+        public VotesController(IDeletableEntityRepository<PostVote> postVotes, IDeletableEntityRepository<FeedbackVote> feedbackVotes)
         {
-            this.votes = votes;
+            this.postVotes = postVotes;
+            this.feedbackVotes = feedbackVotes;
         }
 
         [HttpPost]
-        public ActionResult Vote(int postId, int voteType)
+        public ActionResult PostVote(int postId, int voteType)
         {
             if (voteType > 1)
             {
@@ -31,7 +33,7 @@
             }
 
             var userId = this.User.Identity.GetUserId();
-            var vote = this.votes.All()
+            var vote = this.postVotes.All()
                 .Where(x => x.AuthorId == userId && x.PostId == postId)
                 .FirstOrDefault();
 
@@ -43,7 +45,7 @@
                     PostId = postId,
                     Type = (VoteType)voteType
                 };
-                this.votes.Add(vote);
+                this.postVotes.Add(vote);
             }
             else
             {
@@ -57,13 +59,61 @@
                 }
             }
 
-            this.votes.SaveChanges();
+            this.postVotes.SaveChanges();
 
-            var postVotes = this.votes.All()
+            var postVotes = this.postVotes.All()
                 .Where(x => x.PostId == postId)
                 .Sum(x => (int)x.Type);
 
             return this.Json(new { Count = postVotes });
+        }
+
+        [HttpPost]
+        public ActionResult FeedbackVote(int feedbackId, int voteType)
+        {
+            if (voteType > 1)
+            {
+                voteType = 1;
+            }
+            else if (voteType < -1)
+            {
+                voteType = -1;
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            var vote = this.feedbackVotes.All()
+                .Where(x => x.AuthorId == userId && x.FeedbackId == feedbackId)
+                .FirstOrDefault();
+
+            if (vote == null)
+            {
+                vote = new FeedbackVote
+                {
+                    AuthorId = userId,
+                    FeedbackId = feedbackId,
+                    Type = (VoteType)voteType
+                };
+                this.feedbackVotes.Add(vote);
+            }
+            else
+            {
+                if (vote.Type == (VoteType)voteType)
+                {
+                    vote.Type = VoteType.Neutral;
+                }
+                else
+                {
+                    vote.Type = (VoteType)voteType;
+                }
+            }
+
+            this.feedbackVotes.SaveChanges();
+
+            var feedbackVotes = this.feedbackVotes.All()
+                .Where(x => x.FeedbackId == feedbackId)
+                .Sum(x => (int)x.Type);
+
+            return this.Json(new { Count = feedbackVotes });
         }
     }
 }

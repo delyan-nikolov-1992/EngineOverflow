@@ -26,6 +26,8 @@
 
         public IDbSet<PostVote> PostVotes { get; set; }
 
+        public IDbSet<FeedbackVote> FeedbackVotes { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

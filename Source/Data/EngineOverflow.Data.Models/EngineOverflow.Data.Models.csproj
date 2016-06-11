@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Feedback.cs" />
+    <Compile Include="FeedbackVote.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostVote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

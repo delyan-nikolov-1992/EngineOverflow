@@ -7,5 +7,91 @@
 @Html.Raw(Model.SanitizedContent)
 <h4><b>@Model.FeedbacksCount Answers</b></h4>
 <hr />
-@Html.Partial("~/Views/Questions/PageableFeedbacks.cshtml", Model.FeedbackListViewModel)
+@foreach (var feedback in Model.FeedbackListViewModel.Feedbacks)
+{
+    <div class="row">
+        <div class="col-md-1">
+            <div class="well text-center">
+                <div class="row" data-id="@feedback.Id" data-action="votesCount">@feedback.VotesCount</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="row">
+                        <span data-id="@feedback.Id" data-action="up" class="glyphicon glyphicon-thumbs-up"></span>
+                        <span data-id="@feedback.Id" data-action="down" class="glyphicon glyphicon-thumbs-down"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">votes</div>
+                }
+            </div>
+        </div>
+        <div class="col-md-11">
+            @Html.Raw(feedback.SanitizedContent)
+        </div>
+    </div>
+    <p class="text-right">Asked at <i>@feedback.CreatedOn</i> by <b>@feedback.AuthorUserNameDisplay</b></p>
+    <hr />
+}
+<nav>
+    <ul class="pagination">
+        @if (Model.FeedbackListViewModel.CurrentPage > 1)
+        {
+            <li>
+                <a href="/questions/@Model.Id/@Model.Title?page=@(Model.FeedbackListViewModel.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.FeedbackListViewModel.TotalPages; i++)
+        {
+            var className = string.Empty;
+
+            if (Model.FeedbackListViewModel.CurrentPage == i)
+            {
+                className = "active";
+            }
+
+            <li class="@className"><a href="/questions/@Model.Id/@Model.Title?page=@i">@i</a></li>
+        }
+        @if (Model.FeedbackListViewModel.CurrentPage < Model.FeedbackListViewModel.TotalPages)
+        {
+            <li>
+                <a href="/questions/@Model.Id/@Model.Title?page=@(Model.FeedbackListViewModel.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
 @Html.Partial("~/Views/Feedback/Create.cshtml", new EngineOverflow.Web.InputModels.Feedback.CreateInputModel())
+
+<style>
+    span[data-action="up"], span[data-action="down"] {
+        cursor: pointer;
+        padding: 5px;
+    }
+</style>
+@section scripts {
+    <script>
+        $("span[data-action='up']").click(function () {
+            var id = $(this).attr("data-id");
+            voteClick(id, 1);
+        });
+
+
+        $("span[data-action='down']").click(function () {
+            var id = $(this).attr("data-id");
+            voteClick(id, -1);
+        });
+
+        function voteClick(id, voteType) {
+            $.post("/Votes/FeedbackVote", { feedbackId: id, voteType: voteType },
+                function (data) {
+                    var newVotesCount = data.Count;
+                    $("div[data-action='votesCount'][data-id='" + id + "']")
+                        .html(newVotesCount);
+                });
+        }
+    </script>
+}

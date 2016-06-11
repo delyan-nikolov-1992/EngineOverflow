@@ -68,7 +68,7 @@
         });
 
         function voteClick(id, voteType) {
-            $.post("/Votes/Vote", { postId: id, voteType: voteType },
+            $.post("/Votes/PostVote", { postId: id, voteType: voteType },
                 function (data) {
                     var newVotesCount = data.Count;
                     $("div[data-action='votesCount'][data-id='" + id + "']")
