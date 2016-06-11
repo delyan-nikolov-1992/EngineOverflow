@@ -21,8 +21,7 @@
         public ActionResult Index()
         {
             var model = this.posts.All()
-                .OrderBy(x => x.Votes.Sum(y => (int)y.Type))
-                .ThenBy(x => x.CreatedOn)
+                .OrderByDescending(x => x.CreatedOn)
                 .ThenBy(x => x.Id)
                 .ProjectTo<IndexBlogPostViewModel>();
 

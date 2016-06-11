@@ -57,7 +57,8 @@
                 .ThenBy(x => x.Id)
                 .Skip(itemsToSkip)
                 .Take(ItemsPerPage)
-                .ProjectTo<FeedbackDisplayViewModel>().ToList();
+                .ProjectTo<FeedbackDisplayViewModel>()
+                .ToList();
 
             var feedbackViewModel = new FeedbackListViewModel
             {
