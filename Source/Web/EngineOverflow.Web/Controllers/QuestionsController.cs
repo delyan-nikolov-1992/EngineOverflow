@@ -53,11 +53,12 @@
             var itemsToSkip = (page - 1) * ItemsPerPage;
 
             var feedbacks = postFeedbacks
-                .OrderBy(x => x.CreatedOn)
+                .ProjectTo<FeedbackDisplayViewModel>()
+                .OrderByDescending(x => x.VotesCount)
+                .ThenByDescending(x => x.CreatedOn)
                 .ThenBy(x => x.Id)
                 .Skip(itemsToSkip)
                 .Take(ItemsPerPage)
-                .ProjectTo<FeedbackDisplayViewModel>()
                 .ToList();
 
             var feedbackViewModel = new FeedbackListViewModel
