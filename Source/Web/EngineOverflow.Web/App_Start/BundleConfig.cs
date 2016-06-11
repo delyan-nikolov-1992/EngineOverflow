@@ -14,12 +14,14 @@
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/respond.js",
+                        "~/sweetalert/sweetalert.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.cosmo.css",
-                      "~/Content/site.css"));
+                        "~/Content/bootstrap.cosmo.css",
+                        "~/Content/site.css",
+                        "~/sweetalert/sweetalert.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

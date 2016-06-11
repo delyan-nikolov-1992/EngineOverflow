@@ -71,7 +71,7 @@
             $.post("/Votes/PostVote", { postId: id, voteType: voteType },
                 function (data) {
                     if (data.Error) {
-                        alert(data.Error);
+                        sweetAlert("Oops...", data.Error, "error");
                     } else {
                         var newVotesCount = data.Count;
                         $("div[data-action='votesCount'][data-id='" + id + "']")

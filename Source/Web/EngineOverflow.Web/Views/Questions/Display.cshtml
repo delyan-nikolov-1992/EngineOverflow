@@ -65,7 +65,6 @@
     </ul>
 </nav>
 @Html.Partial("~/Views/Feedback/Create.cshtml", new EngineOverflow.Web.InputModels.Feedback.CreateInputModel())
-
 <style>
     span[data-action="up"], span[data-action="down"] {
         cursor: pointer;
@@ -89,7 +88,7 @@
             $.post("/Votes/FeedbackVote", { feedbackId: id, voteType: voteType },
                 function (data) {
                     if (data.Error) {
-                        alert(data.Error);
+                        sweetAlert("Oops...", data.Error, "error");
                     } else {
                         var newVotesCount = data.Count;
                         $("div[data-action='votesCount'][data-id='" + id + "']")
