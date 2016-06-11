@@ -1,6 +1,7 @@
 ﻿namespace EngineOverflow.Web.Controllers
 {
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -22,9 +23,10 @@
         {
             var posts = this.posts.All();
 
-            if (tags != null)
+            if (!string.IsNullOrWhiteSpace(tags))
             {
-                posts = posts.Where(x => x.Tags.Any(y => tags.Contains(y.Name)));
+                var separatedTags = Regex.Split(tags, @"\W+");
+                posts = posts.Where(x => x.Tags.Any(y => separatedTags.Contains(y.Name)));
             }
 
             var model = posts

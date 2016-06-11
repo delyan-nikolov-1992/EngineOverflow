@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -94,7 +95,7 @@
                 return this.View(input);
             }
 
-            var tagNames = input.Tags.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var tagNames = Regex.Split(input.Tags, @"\W+");
             var uniqueTagNames = new HashSet<string>(tagNames);
             var postTags = new List<Tag>();
 
