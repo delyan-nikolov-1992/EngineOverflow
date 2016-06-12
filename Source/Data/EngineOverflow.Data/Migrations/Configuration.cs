@@ -33,7 +33,7 @@ namespace EngineOverflow.Data.Migrations
                 {
                     var tag = new Tag
                     {
-                        Name = string.Format("Tag-{0}", i)
+                        Name = string.Format("Tag{0}", i)
                     };
 
                     context.Tags.Add(tag);
