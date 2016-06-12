@@ -38,7 +38,7 @@
             this.sanitizer = sanitizer;
         }
 
-        public ActionResult Display(int id, string url, int page = 1)
+        public ActionResult Display(int id, int page = 1)
         {
             var postViewModel = this.posts.All().Where(x => x.Id == id)
                 .ProjectTo<QuestionDisplayViewModel>().FirstOrDefault();
@@ -128,7 +128,7 @@
 
             this.tags.SaveChanges();
 
-            return this.RedirectToAction("Display", new { id = post.Id, url = post.Title.ToLower().Replace(" ", "-") });
+            return this.RedirectToAction("Display", new { id = post.Id });
         }
     }
 }

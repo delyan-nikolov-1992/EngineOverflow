@@ -33,7 +33,7 @@
         {
             get
             {
-                return string.Format("/questions/{0}/{1}", this.Id, this.Title.ToLower().Replace(" ", "-"));
+                return string.Format("/questions/display/{0}", this.Id);
             }
         }
 
