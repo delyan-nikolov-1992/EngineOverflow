@@ -38,7 +38,7 @@
         @if (Model.FeedbackListViewModel.CurrentPage > 1)
         {
             <li>
-                <a href="/questions/@Model.Id/@Model.Title?page=@(Model.FeedbackListViewModel.CurrentPage - 1)" aria-label="Previous">
+                <a href="/questions/display/@Model.Id/?page=@(Model.FeedbackListViewModel.CurrentPage - 1)" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -49,15 +49,15 @@
 
             if (Model.FeedbackListViewModel.CurrentPage == i)
             {
-                className = "active";
+                className = "active disableClick";
             }
 
-            <li class="@className"><a href="/questions/@Model.Id/@Model.Title?page=@i">@i</a></li>
+            <li class="@className"><a href="/questions/display/@Model.Id/?page=@i">@i</a></li>
         }
         @if (Model.FeedbackListViewModel.CurrentPage < Model.FeedbackListViewModel.TotalPages)
         {
             <li>
-                <a href="/questions/@Model.Id/@Model.Title?page=@(Model.FeedbackListViewModel.CurrentPage + 1)" aria-label="Next">
+                <a href="/questions/display/@Model.Id/?page=@(Model.FeedbackListViewModel.CurrentPage + 1)" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -69,6 +69,10 @@
     span[data-action="up"], span[data-action="down"] {
         cursor: pointer;
         padding: 5px;
+    }
+
+    .disableClick {
+        pointer-events: none;
     }
 </style>
 @section scripts {
